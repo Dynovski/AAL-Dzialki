@@ -1,10 +1,6 @@
 # Analiza Algorytmów - Projekt końcowy
 
----
-
-<p align="right"> Zbigniew Dynowski</p>
-
-<p align="right">293087</p>
+<p align="right"> Zbigniew Dynowski<br>293087</p>
 
 ## Treść zadania:
 
@@ -37,16 +33,16 @@
 >
 > Dla przyjętego sposobu podziału obszaru **R** występuje następująca zależność:
 >
-> * 1 punkt  -->  1 działka   |
-> * 2 punkty  -->  1 działka | --- Zarówno maksymalna jak i minimalna liczba działek
-> * 3 punkty  -->  2 działki  |
-> * 4 punkty  -->  3 działki         |
-> * 5 punktów  -->  4 działki      |
-> * 6 punktów  -->  4 działki      |
-> * 7 punktów  -->  5 działek     | --- NLMD
-> * 8 punktów  -->  6 działek     |
-> * 9 punktów  -->  7 działek     |
-> * 10 punktów  -->  7 działek   |
+> * 1 punkt  -->  1 działka --- |
+> * 2 punkty  -->  1 działka -- | ---> Zarówno maksymalna jak i minimalna liczba działek
+> * 3 punkty  -->  2 działki ---|
+> * 4 punkty  -->  3 działki --------|
+> * 5 punktów  -->  4 działki ------|
+> * 6 punktów  -->  4 działki ------|
+> * 7 punktów  -->  5 działek ----- | ---> NLMD
+> * 8 punktów  -->  6 działek -----|
+> * 9 punktów  -->  7 działek -----|
+> * 10 punktów  -->  7 działek --- |
 >
 > ![Zdjęcie pokazujące optymistyczne rozłożenie punktów](/path "Działki przy optymistycznym rozłożeniu punktów")
 >
