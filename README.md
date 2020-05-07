@@ -70,16 +70,16 @@ W celu optymalizacji, powtarzające się przy obliczeniach zbiory punktów mogą
 
 ## Tryby aktywacji:
 
-####Tryb 1 - pobierz dane z pliku, flaga *-m1*
+#### Tryb 1 - pobierz dane z pliku, flaga *-m1*
 * *-in* - nazwa pliku, z którego wczytywane zostaną dane
 * *-out* - nazwa pliku, do którego zapisywany zostanie wynik
 
-####Tryb 2 - wygeneruj instancję problemu i rozwiąż, flaga *-m2*
+#### Tryb 2 - wygeneruj instancję problemu i rozwiąż, flaga *-m2*
 * *-ht* - wysokość obszaru **R**
 * *-w* - szerokość obszaru **R**
 * *-n* - liczba punktów do wygenerowania
 
-####Tryb 3 - przeprowadź proces testowania z pomiarem czasu dla rosnącego problemu i porównanaj ze złożonością teoretyczną, flaga *-m3*
+#### Tryb 3 - przeprowadź proces testowania z pomiarem czasu dla rosnącego problemu i porównanaj ze złożonością teoretyczną, flaga *-m3*
 * *-ht* - początkowa wysokość obszaru **R**
 * *-w* - początkowa szerokość obszaru **R**
 * *-n* - początkowa liczba punktów do wygenerowania
