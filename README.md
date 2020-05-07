@@ -50,10 +50,10 @@ Można zauważyć, że w najbardziej optymistycznym wariancie po dodaniu kolejny
 
 Ogólny wzór na NLMD dla n > 4:
 
-`floor(n / 4) * 3 + tab[n % 4]`, gdzie:
+`floor(n / 4) * 3 + correction[n % 4]`, gdzie:
 
 * n jest liczbą naturalną;
-* tab[0] = 3, tab[1] = 1, tab[2] = 1, tab[3] = 2.
+* correction[0] = 3, correction[1] = 1, correction[2] = 1, correction[3] = 2.
 
 Problem rozwiązywany jest rekurencyjnie, aż do momentu rozpatrywania obszaru z <= trzema punktami lub do momentu, gdy obliczona liczba działek dla danych punktów przecięć jest równa NLMD dla danej liczby punktów. 
 
@@ -70,16 +70,16 @@ W celu optymalizacji, powtarzające się przy obliczeniach zbiory punktów mogą
 
 ## Tryby aktywacji:
 
-####Tryb 1 - pobierz dane z pliku, flaga *-m1*
+#### Tryb 1 - pobierz dane z pliku, flaga *-m1*
 * *-in* - nazwa pliku, z którego wczytywane zostaną dane
 * *-out* - nazwa pliku, do którego zapisywany zostanie wynik
 
-####Tryb 2 - wygeneruj instancję problemu i rozwiąż, flaga *-m2*
+#### Tryb 2 - wygeneruj instancję problemu i rozwiąż, flaga *-m2*
 * *-ht* - wysokość obszaru **R**
 * *-w* - szerokość obszaru **R**
 * *-n* - liczba punktów do wygenerowania
 
-####Tryb 3 - przeprowadź proces testowania z pomiarem czasu dla rosnącego problemu i porównanaj ze złożonością teoretyczną, flaga *-m3*
+#### Tryb 3 - przeprowadź proces testowania z pomiarem czasu dla rosnącego problemu i porównanaj ze złożonością teoretyczną, flaga *-m3*
 * *-ht* - początkowa wysokość obszaru **R**
 * *-w* - początkowa szerokość obszaru **R**
 * *-n* - początkowa liczba punktów do wygenerowania
