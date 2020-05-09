@@ -18,7 +18,10 @@ def read_data(filename):
 
         points = []
         for line in file:
-            points.append(parse_point(line))
+            x, y = parse_point(line)
+            if not (0 < x < width and 0 < y < height):
+                raise ValueError(f"Point is not within range of zone: ({x}, {y})")
+            points.append((x, y))
 
         if len(points) >= min(width, height):
             raise ValueError("Too many specified points to create in a given zone size")

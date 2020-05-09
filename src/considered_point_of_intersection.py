@@ -7,6 +7,7 @@
 # |    D     |     C    |
 # |          |          |
 # |---------------------|
+from optimistic_field_calculator import calculate_max_num_of_fields
 
 
 class ConsideredPointOfIntersection:
@@ -16,7 +17,6 @@ class ConsideredPointOfIntersection:
         self.points_b = []
         self.points_c = []
         self.points_d = []
-        self._correction = (3, 1, 1, 2)
 
         for point in all_points:
             if point[0] < intersection_point[0] and point[1] > intersection_point[1]:
@@ -29,7 +29,10 @@ class ConsideredPointOfIntersection:
                 self.points_c.append(point)
 
         # Obliczanie największej liczby możliwych działek
-        self.max_num_of_fields = len(self.points_a) // 4 * 3 + self._correction[len(self.points_a) % 4] + \
-            len(self.points_b) // 4 * 3 + self._correction[len(self.points_b) % 4] + \
-            len(self.points_c) // 4 * 3 + self._correction[len(self.points_c) % 4] + \
-            len(self.points_d) // 4 * 3 + self._correction[len(self.points_d) % 4]
+        self.max_num_of_fields = calculate_max_num_of_fields(len(self.points_a)) + \
+            calculate_max_num_of_fields(len(self.points_b)) + \
+            calculate_max_num_of_fields(len(self.points_c)) + \
+            calculate_max_num_of_fields(len(self.points_d))
+
+    def __lt__(self, other):
+        return self.max_num_of_fields < other.max_num_of_fields

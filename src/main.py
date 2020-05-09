@@ -10,7 +10,7 @@ def main():
         if not args.fin:
             raise IOError("Input file not specified")
         start_zone = read_data(args.fin)
-        print(start_zone)
+        print("Max number of fields:", start_zone.solve())
 
     elif args.m2:
         pass

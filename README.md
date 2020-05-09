@@ -53,7 +53,7 @@ Ogólny wzór na NLMD dla n > 4:
 `floor(n / 4) * 3 + correction[n % 4]`, gdzie:
 
 * n jest liczbą naturalną;
-* correction[0] = 3, correction[1] = 1, correction[2] = 1, correction[3] = 2.
+* correction[0] = 0, correction[1] = 1, correction[2] = 1, correction[3] = 2.
 
 Problem rozwiązywany jest rekurencyjnie, aż do momentu rozpatrywania obszaru z <= trzema punktami lub do momentu, gdy obliczona liczba działek dla danych punktów przecięć jest równa NLMD dla danej liczby punktów. 
 
