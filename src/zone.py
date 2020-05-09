@@ -9,3 +9,9 @@ class Zone:
     def contains(self, point):
         return self.x_left < point[0] < self.x_right and self.y_bottom < point[1] < self.y_top
 
+    def __str__(self):
+        return f"""Left border: {self.x_left}
+Right border: {self.x_right}
+Top border: {self.y_top}
+Bottom border: {self.y_bottom}
+Points: {self.points}"""

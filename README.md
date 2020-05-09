@@ -71,8 +71,8 @@ W celu optymalizacji, powtarzające się przy obliczeniach zbiory punktów mogą
 ## Tryby aktywacji:
 
 #### Tryb 1 - pobierz dane z pliku, flaga *-m1*
-* *-in* - nazwa pliku, z którego wczytywane zostaną dane
-* *-out* - nazwa pliku, do którego zapisywany zostanie wynik
+* *-fin* - nazwa pliku, z którego wczytywane zostaną dane
+* *-fout* - nazwa pliku, do którego zapisywany zostanie wynik
 
 #### Tryb 2 - wygeneruj instancję problemu i rozwiąż, flaga *-m2*
 * *-ht* - wysokość obszaru **R**

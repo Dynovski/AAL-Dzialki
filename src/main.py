@@ -1,16 +1,21 @@
 from cli import create_parser
+from mode_1_input import read_data
 
 
 def main():
     args = create_parser().parse_args()
+    print(args)
 
     if args.m1:
+        if not args.fin:
+            raise IOError("Input file not specified")
+        start_zone = read_data(args.fin)
+        print(start_zone)
+
+    elif args.m2:
         pass
 
-    if args.m2:
-        pass
-
-    if args.m3:
+    elif args.m3:
         pass
 
 

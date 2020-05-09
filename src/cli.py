@@ -12,8 +12,8 @@ def create_parser():
                                                          "rosnącego problemu i porównanaj ze złożonością teoretyczną."
                                                          " Wymaga: ht, w, n, s, k, r.")
     # Flagi tla trybu 1
-    parser.add_argument("-in", help="nazwa pliku, z którego wczytywane zostaną dane")
-    parser.add_argument("-out", help="nazwa pliku, do którego zapisywany zostanie wynik")
+    parser.add_argument("-fin", help="nazwa pliku, z którego wczytywane zostaną dane")
+    parser.add_argument("-fout", help="nazwa pliku, do którego zapisywany zostanie wynik", default="output.txt")
 
     # Flagi dla trybu 2
     parser.add_argument("-ht", help="wysokość obszaru R", type=int)
