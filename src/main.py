@@ -1,5 +1,6 @@
 from cli import create_parser
 import mode_1
+import mode_2
 
 
 def main():
@@ -13,7 +14,8 @@ def main():
         mode_1.store_answer(args.fout, start_zone.solve())
 
     elif args.m2:
-        pass
+        start_zone = mode_2.generate_instance(args.w, args.ht, args.n)
+        mode_2.store_answer(start_zone, start_zone.solve())
 
     elif args.m3:
         pass

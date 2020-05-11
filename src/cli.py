@@ -16,9 +16,9 @@ def create_parser():
     parser.add_argument("-fout", help="nazwa pliku, do którego zapisywany zostanie wynik", default="output.txt")
 
     # Flagi dla trybu 2
-    parser.add_argument("-ht", help="wysokość obszaru R", type=int)
-    parser.add_argument("-w", help="szerokość obszaru R", type=int)
-    parser.add_argument("-n", help="liczba punktów do wygenerowania", type=int)
+    parser.add_argument("-ht", help="wysokość obszaru R", type=int, default=20)
+    parser.add_argument("-w", help="szerokość obszaru R", type=int, default=20)
+    parser.add_argument("-n", help="liczba punktów do wygenerowania", type=int, default=15)
 
     # Flagi dla trybu 3
     parser.add_argument("-s", help="wartość, o jaką rosną początkowe wielkości co iterację", type=int)
