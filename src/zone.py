@@ -31,13 +31,15 @@ class Zone:
             return 1, []
         elif len(self.points) == 2:
             print("    " * x + "Result +1")
-            return 1, []
+            # Dobolny punkt, nie ma znaczenie w tym wypadku
+            return 1, [self.points[0]]
         elif len(self.points) == 3:
             print("    " * x + "Result +2")
             # Punkty są posortowane, zwracamy środkowy
             return 2, [self.points[1]]
 
         best_intersection_point = []
+        best_trace = []
         best_result = 0
 
         for point in self.points:
@@ -64,15 +66,16 @@ class Zone:
 
             if result > best_result:
                 best_intersection_point = [cp.intersection_point]
+                best_trace = trace
             best_result = max(best_result, result)
             print("    " * x + f"Best result for point {cp.intersection_point}: {best_result}")
             try:
                 # Jeśli obecny wynik nie może być poprawiony w optymistycznym przypadku
                 if best_result >= -self.priority_queue[0][0]:
-                    return best_result, best_intersection_point + trace
+                    return best_result, best_intersection_point + best_trace
             # Gdy jesteśmy w ostatnim punkcie
             except IndexError:
-                return best_result, best_intersection_point + trace
+                return best_result, best_intersection_point + best_trace
 
     def __str__(self):
         return f"""Left border: {self.x_left}
