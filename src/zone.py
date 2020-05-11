@@ -25,19 +25,20 @@ class Zone:
         print("    " * x + "All points:", self.points)
         if len(self.points) == 0:
             print("    " * x + "Result +0")
-            return 0
+            return 0, []
         elif len(self.points) == 1:
             print("    " * x + "Result +1")
-            return 1
+            return 1, []
         elif len(self.points) == 2:
             print("    " * x + "Result +1")
-            return 1
+            return 1, []
         elif len(self.points) == 3:
             print("    " * x + "Result +2")
-            return 2
+            # Punkty są posortowane, zwracamy środkowy
+            return 2, [self.points[1]]
 
+        best_intersection_point = []
         best_result = 0
-        result = 0
 
         for point in self.points:
             p = ConsideredPointOfIntersection(point, self.points)
@@ -52,18 +53,26 @@ class Zone:
                      Zone(cp.intersection_point[0], self.x_right, self.y_top, cp.intersection_point[1], cp.points_b),
                      Zone(self.x_left, cp.intersection_point[0], cp.intersection_point[1], self.y_bottom, cp.points_c),
                      Zone(cp.intersection_point[0], self.x_right, cp.intersection_point[1], self.y_bottom, cp.points_d))
-
+            # Dane lokalne dla danego rozpatrywanego punktu przecięcia, usuwane jeśli nie jest on optymalny
+            result = 0
+            trace = []
             for zone in zones:
-                result += zone.solve(x + 1)
+                new_result, existing_trace = zone.solve(x + 1)
+                result += new_result
+                trace += existing_trace
                 print("    " * x + "Current result:", result)
+
+            if result > best_result:
+                best_intersection_point = [cp.intersection_point]
             best_result = max(best_result, result)
             print("    " * x + f"Best result for point {cp.intersection_point}: {best_result}")
-            result = 0
             try:
+                # Jeśli obecny wynik nie może być poprawiony w optymistycznym przypadku
                 if best_result >= -self.priority_queue[0][0]:
-                    return best_result
+                    return best_result, best_intersection_point + trace
+            # Gdy jesteśmy w ostatnim punkcie
             except IndexError:
-                return best_result
+                return best_result, best_intersection_point + trace
 
     def __str__(self):
         return f"""Left border: {self.x_left}
