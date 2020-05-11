@@ -59,12 +59,15 @@ Problem rozwiązywany jest rekurencyjnie, aż do momentu rozpatrywania obszaru z
 
 ### Algorytm rozwiązania:
 
-1. Sprawdź, czy można wyjść z rekurencji, jeśli tak to zwróć obliczoną liczbę działek.
-2. Dla każdego punktu w danym obszarze wyznacz NMLD, gdyby został punktem przecięcia.
+1. Sprawdź, czy można wyjść z rekurencji, jeśli tak to zwróć obliczoną liczbę działek i listę z punktami przecięcia.
+2. Dla każdego punktu w danym obszarze wyznacz NMLD, gdyby został on punktem przecięcia.
 3. Każdy rezultat zapisz w kolejce priorytetowej.
-4. Z kolejki wybierz punkt o max(NLMD) i uczyń go punktem przecięcia
-5. Uruchom rekurencyjnie dla nowopowstałych obszarów po przecięciu.
-6. Porównaj faktyczną liczbę działek z NLMD dla danej liczby punktów. Jeśli są takie same to zakończ działanie. Jeśli nie to zapisz max(max_do_tej_pory, obliczona_liczba_działek) i wróć do pkt. 4.
+4. Z kolejki wybierz punkt o max(NLMD) i uczyń go punktem przecięcia.
+5. Wyznacz obszary powstałe po dokonaniu przecięcia.
+6. Uruchom algorytm rekurencyjnie dla obszarów powstałych po przecięciu.
+7. Porównaj uzyskany wynik z najlepszym obecnie, zapisz nowy i punkty cięcia prowadzące do niego jeśli okazał się lepszy.
+8. Jeśli uzyskany wynik jest >= NLMD dla kolejnego punktu do rozpatrzenia to zakończ algorytm i zwróć wynik i cięcia do niego prowadzące.
+9. Jeśli uzyskany wynik jest < NLMD dla kolejnego punktu, to uczyń kolejny punkt punktem przecięcia i przejdź do kroku 5.
 
 W celu optymalizacji, powtarzające się przy obliczeniach zbiory punktów mogą być umieszczone w słowniku.
 
