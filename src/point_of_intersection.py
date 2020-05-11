@@ -10,22 +10,22 @@
 from optimistic_field_calculator import calculate_max_num_of_fields
 
 
-class ConsideredPointOfIntersection:
-    def __init__(self, intersection_point, all_points):
-        self.intersection_point = intersection_point
+class PointOfIntersection:
+    def __init__(self, coordinates, all_points):
+        self.coordinates = coordinates
         self.points_a = []
         self.points_b = []
         self.points_c = []
         self.points_d = []
 
         for point in all_points:
-            if point[0] < intersection_point[0] and point[1] > intersection_point[1]:
+            if point[0] < coordinates[0] and point[1] > coordinates[1]:
                 self.points_a.append(point)
-            elif point[0] > intersection_point[0] and point[1] > intersection_point[1]:
+            elif point[0] > coordinates[0] and point[1] > coordinates[1]:
                 self.points_b.append(point)
-            elif point[0] < intersection_point[0] and point[1] < intersection_point[1]:
+            elif point[0] < coordinates[0] and point[1] < coordinates[1]:
                 self.points_d.append(point)
-            elif point[0] > intersection_point[0] and point[1] < intersection_point[1]:
+            elif point[0] > coordinates[0] and point[1] < coordinates[1]:
                 self.points_c.append(point)
 
         # Obliczanie największej liczby możliwych działek

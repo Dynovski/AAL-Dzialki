@@ -7,7 +7,7 @@
 # |    D     |     C    |
 # |          |          |
 # |---------------------|
-from considered_point_of_intersection import ConsideredPointOfIntersection
+from point_of_intersection import PointOfIntersection
 import heapq
 
 
@@ -43,18 +43,18 @@ class Zone:
         best_result = 0
 
         for point in self.points:
-            p = ConsideredPointOfIntersection(point, self.points)
+            p = PointOfIntersection(point, self.points)
             priority = -p.max_num_of_fields
             heapq.heappush(self.priority_queue, (priority, p))
 
         while True:
             cp = heapq.heappop(self.priority_queue)[1]
-            print("    " * x + f"Max number od fields for {cp.intersection_point}: {cp.max_num_of_fields}")
+            print("    " * x + f"Max number od fields for {cp.coordinates}: {cp.max_num_of_fields}")
             # 0 --> Obszar A, 1 --> Obszar B, 2 --> Obszar C, 3 --> Obszar D
-            zones = (Zone(self.x_left, cp.intersection_point[0], self.y_top, cp.intersection_point[1], cp.points_a),
-                     Zone(cp.intersection_point[0], self.x_right, self.y_top, cp.intersection_point[1], cp.points_b),
-                     Zone(self.x_left, cp.intersection_point[0], cp.intersection_point[1], self.y_bottom, cp.points_c),
-                     Zone(cp.intersection_point[0], self.x_right, cp.intersection_point[1], self.y_bottom, cp.points_d))
+            zones = (Zone(self.x_left, cp.coordinates[0], self.y_top, cp.coordinates[1], cp.points_a),
+                     Zone(cp.coordinates[0], self.x_right, self.y_top, cp.coordinates[1], cp.points_b),
+                     Zone(self.x_left, cp.coordinates[0], cp.coordinates[1], self.y_bottom, cp.points_c),
+                     Zone(cp.coordinates[0], self.x_right, cp.coordinates[1], self.y_bottom, cp.points_d))
             # Dane lokalne dla danego rozpatrywanego punktu przecięcia, usuwane jeśli nie jest on optymalny
             result = 0
             trace = []
@@ -65,10 +65,10 @@ class Zone:
                 print("    " * x + "Current result:", result)
 
             if result > best_result:
-                best_intersection_point = [cp.intersection_point]
+                best_intersection_point = [cp.coordinates]
                 best_trace = trace
             best_result = max(best_result, result)
-            print("    " * x + f"Best result for point {cp.intersection_point}: {best_result}")
+            print("    " * x + f"Best result for point {cp.coordinates}: {best_result}")
             try:
                 # Jeśli obecny wynik nie może być poprawiony w optymistycznym przypadku
                 if best_result >= -self.priority_queue[0][0]:
@@ -76,6 +76,9 @@ class Zone:
             # Gdy jesteśmy w ostatnim punkcie
             except IndexError:
                 return best_result, best_intersection_point + best_trace
+
+    def contains(self, point):
+        return self.x_left < point[0] < self.x_right and self.y_bottom < point[1] < self.y_top
 
     def __str__(self):
         return f"""Left border: {self.x_left}
