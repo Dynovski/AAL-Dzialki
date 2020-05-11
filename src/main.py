@@ -1,5 +1,5 @@
 from cli import create_parser
-from mode_1_input import read_data
+import mode_1
 
 
 def main():
@@ -9,8 +9,8 @@ def main():
     if args.m1:
         if not args.fin:
             raise IOError("Input file not specified")
-        start_zone = read_data(args.fin)
-        print("Max number of fields:", start_zone.solve())
+        start_zone = mode_1.read_data(args.fin)
+        mode_1.store_answer(args.fout, start_zone.solve())
 
     elif args.m2:
         pass
