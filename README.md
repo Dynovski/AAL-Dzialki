@@ -25,7 +25,7 @@ Sposób podziału obszaru **R**:
 
 Obszar **R** dzielony jest jednocześnie dwiema prostymi wzdłuż osi *X* i *Y* układu współrzędnych, względem ustalonego punktu przecięcia, wybranego ze zbioru **P**. Cięcia przebiegają przez cały *najmniejszy* obszar otaczający dany punkt podziału.
 
-![Zdjęcie przedstawiające sposób podziału](/path "Podział na zdjęciu następuje zgodnie z numeracją punktów przecięcia")
+![Zdjęcie przedstawiające sposób podziału](images/sposob-podzialu.png "Przykład cięć")
 
 ## Rozwiązanie problemu:
 
@@ -44,7 +44,7 @@ Dla przyjętego sposobu podziału obszaru **R** występuje następująca zależn
 * 9 punktów  -->  7 działek -----|
 * 10 punktów  -->  7 działek ---|
 
-![Zdjęcie pokazujące optymistyczne rozłożenie punktów](/path "Działki przy optymistycznym rozłożeniu punktów")
+![Zdjęcie pokazujące optymistyczne rozłożenie punktów](images/optymistyczne-rozlozenie.png "Działki przy optymistycznym rozłożeniu punktów")
 
 Można zauważyć, że w najbardziej optymistycznym wariancie po dodaniu kolejnych 4 punktów do **R** z jednej działki powstają cztery.
 
