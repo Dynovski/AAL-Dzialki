@@ -21,8 +21,8 @@ def create_parser():
     parser.add_argument("-n", help="liczba punktów do wygenerowania", type=int, default=15)
 
     # Flagi dla trybu 3
-    parser.add_argument("-s", help="wartość, o jaką rosną początkowe wielkości co iterację", type=int)
-    parser.add_argument("-k", help="liczba iteracji", type=int)
-    parser.add_argument("-r", help="liczba powtórzeń na iterację", type=int)
+    parser.add_argument("-s", help="wartość, o jaką rosną początkowe wielkości co iterację", type=int, default=2)
+    parser.add_argument("-k", help="liczba iteracji", type=int, default=15)
+    parser.add_argument("-r", help="liczba powtórzeń na iterację", type=int, default=5)
 
     return parser

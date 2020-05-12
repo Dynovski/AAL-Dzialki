@@ -1,12 +1,12 @@
 from cli import create_parser
 import mode_1
 import mode_2
+import mode_3
 import plotting
 
 
 def main():
     args = create_parser().parse_args()
-    print(args)
 
     if args.m1:
         if not args.fin:
@@ -23,7 +23,7 @@ def main():
         plotting.draw_problem(start_zone, trace)
 
     elif args.m3:
-        pass
+        mode_3.start_testing(args.w, args.ht, args.n, args.s, args.k, args.r)
 
 
 if __name__ == "__main__":
