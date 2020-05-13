@@ -1,8 +1,9 @@
 from random import shuffle
-from zone import Zone
+from classes.zone import Zone
 
 
 def generate_instance(width, height, num_of_points):
+    """Generuje obszar początkowy na podstawie dostarczonych parametrów"""
     if num_of_points >= min(width, height):
         raise ValueError("Too many points for a given zone size")
     point_x = [*range(1, width)]

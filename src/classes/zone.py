@@ -7,7 +7,7 @@
 # |    D     |     C    |
 # |          |          |
 # |---------------------|
-from point_of_intersection import PointOfIntersection
+from classes.point_of_intersection import PointOfIntersection
 import heapq
 
 
@@ -31,7 +31,7 @@ class Zone:
             return 1, []
         elif len(self.points) == 2:
             # print("    " * x + "Result +1")
-            # Dobolny punkt, nie ma znaczenie w tym wypadku
+            # Dowolny punkt, nie ma znaczenia w tym wypadku
             return 1, [self.points[0]]
         elif len(self.points) == 3:
             # print("    " * x + "Result +2")
@@ -48,6 +48,7 @@ class Zone:
             heapq.heappush(self.priority_queue, (priority, p))
 
         while True:
+            # Rozpatrywany jest punkt najbardziej optymistyczny
             cp = heapq.heappop(self.priority_queue)[1]
             # print("    " * x + f"Max number od fields for {cp.coordinates}: {cp.max_num_of_fields}")
             # 0 --> Obszar A, 1 --> Obszar B, 2 --> Obszar C, 3 --> Obszar D
@@ -55,7 +56,7 @@ class Zone:
                      Zone(cp.coordinates[0], self.x_right, self.y_top, cp.coordinates[1], cp.points_b),
                      Zone(self.x_left, cp.coordinates[0], cp.coordinates[1], self.y_bottom, cp.points_c),
                      Zone(cp.coordinates[0], self.x_right, cp.coordinates[1], self.y_bottom, cp.points_d))
-            # Dane lokalne dla danego rozpatrywanego punktu przecięcia, usuwane jeśli nie jest on optymalny
+            # Dane lokalne dla rozpatrywanego punktu przecięcia, czyszczone jeśli wciąż może być lepszy punkt
             result = 0
             trace = []
             for zone in zones:
@@ -67,10 +68,10 @@ class Zone:
             if result > best_result:
                 best_intersection_point = [cp.coordinates]
                 best_trace = trace
-            best_result = max(best_result, result)
+                best_result = result
             # print("    " * x + f"Best result for point {cp.coordinates}: {best_result}")
             try:
-                # Jeśli obecny wynik nie może być poprawiony w optymistycznym przypadku
+                # Jeśli nie można już uzyskać lepszego wyniku
                 if best_result >= -self.priority_queue[0][0]:
                     return best_result, best_intersection_point + best_trace
             # Gdy jesteśmy w ostatnim punkcie

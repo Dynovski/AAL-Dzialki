@@ -9,8 +9,8 @@ def create_parser():
                                                          "Wymaga: in, out.")
     parser.add_argument("-m2", action="store_true", help="Wygeneruj i rozwiąż instancję problemu. Wymaga: ht, w ,n.")
     parser.add_argument("-m3", action="store_true", help="Przeprowadź proces testowania z pomiarem czasu dla "
-                                                         "rosnącego problemu i porównanaj ze złożonością teoretyczną."
-                                                         " Wymaga: ht, w, n, s, k, r.")
+                                                         "rosnącego problemu i porównanaj ze złożonością teoretyczną. "
+                                                         "Wymaga: ht, w, n, s, k, r.")
     # Flagi tla trybu 1
     parser.add_argument("-fin", help="nazwa pliku, z którego wczytywane zostaną dane")
     parser.add_argument("-fout", help="nazwa pliku, do którego zapisywany zostanie wynik", default="output.txt")

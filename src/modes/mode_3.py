@@ -1,5 +1,5 @@
 import time
-from mode_2 import generate_instance
+from modes.mode_2 import generate_instance
 
 
 def measure_mean_execution_time(function, repetitions):
@@ -9,7 +9,8 @@ def measure_mean_execution_time(function, repetitions):
     return (time.process_time() - start_time) / repetitions
 
 
-def start_testing(width, height, start_number, step, iterations, repetitions):
+def benchmark(width, height, start_number, step, iterations, repetitions):
+    """Generuje coraz trudniejsze instancje problemu oraz oblicza średni czas potrzebny do ich rozwiązania"""
     open("test_results.txt", 'w').close()
     for i in range(iterations):
         num_of_points = start_number + i * step

@@ -1,4 +1,4 @@
-from zone import Zone
+from classes.zone import Zone
 
 
 def parse(string):
@@ -7,6 +7,7 @@ def parse(string):
 
 
 def read_data(filename):
+    """Wczytuje dane z pliku i na ich podstawie tworzy instancję obszaru początkowego"""
     # Automatycznie zamyka plik nawet jeśli podniesiony będzie wyjątek
     with open(filename, 'r') as file:
         width, height = parse(file.readline())
@@ -32,6 +33,7 @@ def store_answer(filename, answer):
 
 
 def validate_coordinates(points):
+    """Sprawdza, czy żadne dwa punkty nie mają takiej samej współrzędnej"""
     x_list, y_list = zip(*points)
     for i in x_list:
         if x_list.count(i) > 1:

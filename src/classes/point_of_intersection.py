@@ -1,5 +1,5 @@
 # |---------------------|  x - punkt przecięcia
-# |          |          |  A, B, C, D - podobszary po przecięciu
+# |          |          |  A, B, C, D - pod-obszary po przecięciu
 # |    A     |     B    |
 # |          |          |
 # |----------x----------|
@@ -7,7 +7,7 @@
 # |    D     |     C    |
 # |          |          |
 # |---------------------|
-from optimistic_field_calculator import calculate_max_num_of_fields
+from utilities.field_calculator import calculate_max_num_of_fields
 
 
 class PointOfIntersection:
