@@ -32,17 +32,18 @@ Obszar **R** dzielony jest jednocześnie dwiema prostymi wzdłuż osi *X* i *Y* 
 Rozwiązanie oparte jest na zasadzie *dziel i rządź*. Początkowy problem dzielony jest na mniejsze, aż do momentu, gdy rozwiązanie staje się trywialne. W tym celu potrzebne jest wprowadzenie pojęcia **Największej Liczby Możliwych Działek (NLMD)** dla danej liczby punktów w obszarze. Jest to optymistycznie szacowana liczba działek przy najlepszym możliwym rozłożeniu punktów. 
 
 Dla przyjętego sposobu podziału obszaru **R** występuje następująca zależność:
-
-* 1 punkt  -->  1 działka --- |
-* 2 punkty  -->  1 działka -- | ---> Zarówno maksymalna jak i minimalna liczba działek
-* 3 punkty  -->  2 działki ---|
-* 4 punkty  -->  3 działki --------|
-* 5 punktów  -->  4 działki ------|
-* 6 punktów  -->  4 działki ------|
-* 7 punktów  -->  5 działek ----- | ---> NLMD
-* 8 punktów  -->  6 działek -----|
-* 9 punktów  -->  7 działek -----|
-* 10 punktów  -->  7 działek ---|
+```
+1 punkt     -->  1 działka ───┐
+2 punkty    -->  1 działka ───┼──> Zarówno maksymalna jak i minimalna liczba działek
+3 punkty    -->  2 działki ───┘
+4 punkty    -->  3 działki ──────┐
+5 punktów   -->  4 działki ──────┤
+6 punktów   -->  4 działki ──────┤
+7 punktów   -->  5 działek ──────┼──> NLMD
+8 punktów   -->  6 działek ──────┤
+9 punktów   -->  7 działek ──────┤
+10 punktów  -->  7 działek ──────┘
+```
 
 ![Zdjęcie pokazujące optymistyczne rozłożenie punktów](images/optymistyczne-rozlozenie.png "Działki przy optymistycznym rozłożeniu punktów")
 
@@ -92,11 +93,45 @@ W celu optymalizacji, powtarzające się przy obliczeniach zbiory punktów mogą
 
 ## Stosowane algorytmy i struktury danych:
 
+**heapq** - struktura danych realizująca w projekcie funkcję kolejki proirytetowej, dla rozwiązania, które 
+zastosowałem wystarczy, że zawsze będziemy w stanie otrzymać element o największej wartości priorytetu, reszta elementów 
+nie musi być stale posortowana, dokumentacja: [https://docs.python.org/3.0/library/heapq.html](https://docs.python.org/3.0/library/heapq.html)
 
+**dictionary** - struktura wykorzystana do przechowywania już obliczonych wyników dla pewnych obszarów, w projekcie kluczem
+jest hash danego obiektu *Zone*, a wartością przechowywaną jest obliczona liczba działek oraz kolejne punkty cięć 
+prowadzące do takiego rezultatu, dokumentacja: [https://docs.python.org/3/tutorial/datastructures.html#dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries)
 
 ## Drzewo plików:
-
-
+```
+.
+├── images - pliki obrazów wykorzystanych w README
+│   ├── optymistyczne-rozlozenie.png
+│   └── sposob-podzialu.png
+│
+├── src - pliki źródłowe programu
+│   ├── classes - folder z napisanymi klasami
+|   |   ├── point_of_intersection.py - klasa przechowująca dane w przypadku cięcia względem wskazanego punktu
+│   |   └── zone.py - klasa przechowująca informacje o wskazanym obszarze
+|   |
+│   ├── modes - folder z trybami programu
+│   │   ├── mode_1.py - realizacja wczytywania danych z pliku
+│   │   ├── mode_2.py - realizacja generowania danych na podstawie flag
+|   |   └── mode_3.py - realizacja testowania czasu działania algorytmu  
+|   |
+│   ├── utilities - folder z plikami pomocniczymi
+│   |   ├── cli.py - realizacja interfejsu wiersza poleceń
+│   │   ├── field_calculator.py - służy do obliczania największej możliwej liczby działek
+|   |   └── graphic_solution.py - realizacja graficznej reprezentacji wyniku końcowego
+|   |
+|   ├── main.py - plik uruchomieniowy
+|   └── test_results.txt - plik z wynikami przeprowadzonych testów z flagami [-m3 -w 30 -ht 40 -n 28 -s 5 -k 30 -r 5]
+|
+└── tests - folder z testowymi plikami tekstowymi dla trybu 1 
+    ├── test - test dla 10 punktów, oczekiwany rezultat - 7
+    ├── test2 - test dla 13 punktów, oczekiwany rezultat - 9
+    ├── test3 - test dla 17 punktów, oczekiwany rezultat - 11
+    └── test_48s_without_dictionary - przykład wykonujący sie 48s bez wykorzystania słownika i mniej niż 1s po wykorzystaniu
+```
 
 
 
