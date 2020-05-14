@@ -38,7 +38,7 @@ def append_subzones(zones_list, of_zone, intersection_point):
 
 
 def draw(start_zone, list_of_intersection_point):
-    """Rysuje na cięcia obszarów i powstały w ten sposób stan końcowy obszaru początkowego"""
+    """Rysuje cięcia obszarów i powstały w ten sposób stan końcowy obszaru początkowego"""
     prepare_plot(start_zone.points, start_zone.x_right, start_zone.y_top)
     zones = [start_zone]
 

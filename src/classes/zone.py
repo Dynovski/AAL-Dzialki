@@ -17,10 +17,11 @@ class Zone:
         self.x_right = x_right
         self.y_top = y_top
         self.y_bottom = y_bottom
-        self.points = sorted(points, key=lambda point: point[1])
+        # tuple żeby można było użyć domyślnego hash dla tuple
+        self.points = tuple(sorted(points, key=lambda point: point[1]))
         self.priority_queue = []
 
-    def solve(self, x=0):
+    def solve(self, solved):  # , x=0):
         # print("    " * x + f"Entered solve() level {x}")
         # print("    " * x + "All points:", self.points)
         if len(self.points) == 0:
@@ -37,6 +38,10 @@ class Zone:
             # print("    " * x + "Result +2")
             # Punkty są posortowane, zwracamy środkowy
             return 2, [self.points[1]]
+
+        current_zone_hash = hash(self)
+        if current_zone_hash in solved:
+            return solved[current_zone_hash]
 
         best_intersection_point = []
         best_trace = []
@@ -60,7 +65,7 @@ class Zone:
             result = 0
             trace = []
             for zone in zones:
-                new_result, existing_trace = zone.solve(x + 1)
+                new_result, existing_trace = zone.solve(solved)  # x + 1)
                 result += new_result
                 trace += existing_trace
                 # print("    " * x + "Current result:", result)
@@ -73,9 +78,12 @@ class Zone:
             try:
                 # Jeśli nie można już uzyskać lepszego wyniku
                 if best_result >= -self.priority_queue[0][0]:
+                    # Zapis rozwiązania dla danego zbioru punktów
+                    solved[current_zone_hash] = (best_result, best_intersection_point + best_trace)
                     return best_result, best_intersection_point + best_trace
             # Gdy jesteśmy w ostatnim punkcie
             except IndexError:
+                solved[current_zone_hash] = (best_result, best_intersection_point + best_trace)
                 return best_result, best_intersection_point + best_trace
 
     def contains(self, point):
@@ -83,3 +91,6 @@ class Zone:
 
     def __str__(self):
         return f"""Zone size: {self.x_right} x {self.y_top}\nPoints: {self.points}"""
+
+    def __hash__(self):
+        return hash(self.points)

@@ -21,7 +21,7 @@ def generate_instance(width, height, num_of_points):
     return Zone(0, width, height, 0, points)
 
 
-def store_answer(start_zone, answer, filename="output.txt"):
+def store_answer(start_zone, answer, filename):
     with open(filename, 'w') as file:
         file.write(f"Generated problem:\n{start_zone}\n\n"
                    f"Maximum number of fields: {answer[0]}\nIntersection points in sequence: {answer[1]}")
