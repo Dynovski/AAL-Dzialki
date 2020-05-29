@@ -22,7 +22,7 @@ def main():
         graphic_solution.draw(start_zone, points_of_intersection)
 
     elif args.m3:
-        mode_3.benchmark(args.w, args.ht, args.n, args.s, args.k, args.r, solved)
+        mode_3.benchmark(args.w, args.ht, args.n, args.s, args.k, args.r)
 
 
 if __name__ == "__main__":
