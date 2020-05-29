@@ -27,7 +27,6 @@ def benchmark(width, height, start_number, step, iterations, repetitions):
     mean_times = []
 
     for i in range(iterations):
-        print(i)
         num_of_points = start_number + i * step
         zone_width = width + i * step
         zone_height = height + i * step
